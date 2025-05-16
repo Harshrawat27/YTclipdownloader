@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+YouTube Video Clipper
+A Next.js 15 application with a clean black and white UI for downloading YouTube videos and creating clips from specific timestamps.
+Features
 
-## Getting Started
+Download YouTube videos with selectable resolution
+Create clips from video using timestamp ranges
+Option to optimize clips for social media (Twitter/X compatible)
+Preview and download individual clips
+Clean, responsive black and white UI
 
-First, run the development server:
+Prerequisites
+Before running this application, make sure you have the following installed:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Node.js (v18.0.0 or higher)
+FFmpeg - for video processing
+yt-dlp - for YouTube video downloading
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Installing FFmpeg
+On macOS:
+bashbrew install ffmpeg
+On Ubuntu/Debian:
+bashsudo apt update
+sudo apt install ffmpeg
+On Windows:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Download from ffmpeg.org
+Add to your PATH environment variable
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Installing yt-dlp
+On macOS:
+bashbrew install yt-dlp
+On Ubuntu/Debian:
+bashsudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+sudo chmod a+rx /usr/local/bin/yt-dlp
+On Windows:
 
-## Learn More
+Download from yt-dlp releases
+Add to your PATH environment variable
 
-To learn more about Next.js, take a look at the following resources:
+Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+bashgit clone https://github.com/yourusername/youtube-clipper.git
+cd youtube-clipper
 
-## Deploy on Vercel
+Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+bashnpm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run the development server:
+
+bashnpm run dev
+
+Open http://localhost:3000 in your browser
+
+Building for Production
+bashnpm run build
+npm start
+Project Structure
+youtube-clipper/
+├── app/
+│ ├── page.js # Main page with UI
+│ ├── layout.js # Root layout with Tailwind setup
+│ ├── globals.css # Global styles
+│ ├── api/
+│ │ ├── download/route.js # API route for downloading YouTube videos
+│ │ ├── clip/route.js # API route for clipping videos
+│ │ ├── view/route.js # API route for viewing clips
+│ │ └── download-clip/route.js # API route for downloading clips
+├── components/
+│ ├── VideoDownloader.jsx # Component for video downloading
+│ └── VideoClipper.jsx # Component for video clipping
+├── lib/
+│ ├── youtube.js # Utility functions for YouTube operations
+│ └── video.js # Utility functions for video operations
+├── public/
+│ └── videos/ # Directory to store downloaded/clipped videos
+├── package.json # Project dependencies
+└── tailwind.config.js # Tailwind CSS configuration
+Technologies Used
+
+Next.js 15
+React
+Tailwind CSS
+FFmpeg
+yt-dlp / ytdl-core
+React Icons
+
+License
+MIT
+Notes
+
+Downloaded videos and clips are stored in the public/videos directory
+For production use, consider implementing authentication and storage limitations
+This application is for educational purposes only
